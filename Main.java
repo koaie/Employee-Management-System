@@ -28,7 +28,7 @@ class List {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(","); // Split the data to variables, marked by ","
                 // Name, Surname, Gender, Birthdate(yyyy-mm-dd), ID, remHolidays, reqHolidays
-                if (line.matches("[\\w ']+,[\\w ']+,(Male|Female|Other),\\d{4}-\\d{2}-\\d{2},\\d+,\\d+,\\d+")) {
+                if (line.matches("[\\w ',.]+,[\\w ,.]+,(Male|Female|Other),\\d{4}-\\d{2}-\\d{2},\\d+,\\d+,\\d+")) {
                     nEmployee(data[0], data[1], data[2], data[3], data[4], data[5], data[6]); // Call new employee and
                                                                                               // pass the array as data
                 } else {

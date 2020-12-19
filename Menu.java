@@ -191,22 +191,19 @@ public class Menu extends javax.swing.JFrame {
     private void HolidayReqButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int rem = Integer.parseInt(list.getNode(jTable.getSelectedRow(), remHolidayPos));
         int req = Integer.parseInt(list.getNode(jTable.getSelectedRow(), reqHolidayPos));
-        String input = JOptionPane.showInputDialog(null, "Employee: " + list.getNode(jTable.getSelectedRow(), 0) +  "\nRemaining holidays: " + list.getNode(jTable.getSelectedRow(), remHolidayPos),
+        String input = JOptionPane.showInputDialog(null, "Employee: " + list.getNode(jTable.getSelectedRow(), 0)
+                + "\nRemaining holidays: " + list.getNode(jTable.getSelectedRow(), remHolidayPos),
                 JOptionPane.QUESTION_MESSAGE);
 
         if (!input.isEmpty()) {
-            if(input.matches("\\d+"))
-            {
+            if (input.matches("\\d+")) {
                 int in = Integer.parseInt(input);
-                if (req <= rem)
-                {
+                if (in <= rem) {
                     list.setNode(jTable.getSelectedRow(), remHolidayPos, String.valueOf(rem - in));
                     list.setNode(jTable.getSelectedRow(), reqHolidayPos, String.valueOf(req + in));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Input exceeds remaning holidays","Error!",JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Input exceeds remaning holidays");
             }
         }
         if (jTable.getSelectedColumn() == birthDatePos || jTable.getSelectedColumn() == agePos) {
