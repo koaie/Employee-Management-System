@@ -16,7 +16,7 @@ class Main {
 
 class List {
     ArrayList<Employee> eList = new ArrayList<>(); // Declaring an arraylist to store linkedlists of employees
-    String fileName = "./Employees.csv"; // File to Load/Save from/to
+    String fileName = "./data.csv"; // File to Load/Save from/to
     // declaring variables for node index values of data.
     int namePos = 0, surnamePos = 1, genderPos = 2, birthDatePos = 3, agePos = 4, idPos = 5, remHoliday = 6,
             reqHoliday = 7;
