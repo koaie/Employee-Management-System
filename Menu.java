@@ -229,12 +229,13 @@ public class Menu extends javax.swing.JFrame {
     private void NewEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String name = JOptionPane.showInputDialog(null, "Name: ", JOptionPane.QUESTION_MESSAGE);
         String surname = JOptionPane.showInputDialog(null, "Surname: ", JOptionPane.QUESTION_MESSAGE);
-        String gender = JOptionPane.showInputDialog(null, "Gender: ", JOptionPane.QUESTION_MESSAGE);
+        String gender = JOptionPane.showInputDialog(null, "Gender(Male|Female|Other): ", JOptionPane.QUESTION_MESSAGE);
         String birthDate = JOptionPane.showInputDialog(null, "Birth Date(yyyy-mm-dd): ", JOptionPane.QUESTION_MESSAGE);
         String remHolidays = JOptionPane.showInputDialog(null, "Remaning Holidays: ", JOptionPane.QUESTION_MESSAGE);
         String reqHolidays = JOptionPane.showInputDialog(null, "Requested Holidays: ", JOptionPane.QUESTION_MESSAGE);
-        if (name.matches("[A-Za-z]+") && surname.matches("[A-Za-z]+") && !gender.isEmpty()
-                && birthDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
+
+        if (name.matches("[A-Za-z]+") && surname.matches("[A-Za-z]+") && !gender.matches("(Male|Female|Other)")
+                && birthDate.matches("\\d{4}-\\d{2}-\\d{2}") && remHolidays.matches("\\d+") && reqHolidays.matches("\\d+")) {
             list.nEmployee(name, surname, gender, birthDate,
                     Integer.toString(Integer.parseInt(list.getNode(list.totalEmployees() - 1, idPos)) + 1), remHolidays,
                     reqHolidays);
