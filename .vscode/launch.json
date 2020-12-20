@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "vmArgs": "--module-path ./javafx/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path ./libs/javafx/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "Main",
             "projectName": "Employee-Management-System_4afce8ee"
         }

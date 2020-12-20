@@ -1,14 +1,22 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.base.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.controls.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.fxml.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.graphics.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.media.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.swing.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.web.jar",
-        "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx-swt.jar",
-        "c:\\Users\\Administrator\\Downloads\\jmetro-11.6.14.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.controls.jar",
+            "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.graphics.jar",
+            "c:\\Program Files\\javafx-sdk-15.0.1\\lib\\javafx.media.jar",
+            "libs/jmetro-11.6.14.jar",
+            "libs/javafx/lib/javafx.base.jar",
+            "libs/javafx/lib/javafx.controls.jar",
+            "libs/javafx/lib/javafx.fxml.jar",
+            "libs/javafx/lib/javafx.graphics.jar",
+            "libs/javafx/lib/javafx.media.jar",
+            "libs/javafx/lib/javafx.swing.jar",
+            "libs/javafx/lib/javafx.web.jar",
+            "libs/javafx/lib/javafx-swt.jar"
+        ],
+        "exclude": [
+            "c:\\Users\\Administrator\\Downloads\\jmetro-11.6.14.jar"
+        ]
+    }
 }
