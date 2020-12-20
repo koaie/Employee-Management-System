@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private String fileName = "./data.csv"; // Default File to Load/Save from/to
     File file = new File();
-    List list = new List();
+    EmployeeMgt list = new EmployeeMgt();
 
 
     @FXML
@@ -49,8 +49,9 @@ public class Controller implements Initializable {
         birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
         age.setCellValueFactory(new PropertyValueFactory<>("age"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        table.setItems(FXCollections.observableArrayList(file.load(fileName))); // Load data to table
+        
+        list.set(file.load(fileName));
+        table.setItems(FXCollections.observableArrayList(list.get())); // Load data to table
     }
 
 }
