@@ -25,7 +25,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
 
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Employee Mangement System");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -28,7 +28,7 @@ public class File {
         {
             System.out.println(e.toString());
         }
-        return null;
+        return new ArrayList<>();
     }
 
     // Save the linkedlists in a readable format as .csv
