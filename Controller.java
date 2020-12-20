@@ -12,6 +12,7 @@ public class Controller implements Initializable {
     private String fileName = "./data.csv"; // Default File to Load/Save from/to
     File file = new File();
     EmployeeMgt list = new EmployeeMgt();
+    String empRegex = "[\\w '\\-,.]+,[\\w ,'\\-.]+,(Male|Female|Other),\\d{4}-\\d{2}-\\d{2},\\d+,\\d+,\\d+";
 
 
     @FXML
@@ -50,7 +51,7 @@ public class Controller implements Initializable {
         age.setCellValueFactory(new PropertyValueFactory<>("age"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         
-        list.set(file.load(fileName));
+        list.set(file.load(empRegex, fileName));
         table.setItems(FXCollections.observableArrayList(list.get())); // Load data to table
     }
 
