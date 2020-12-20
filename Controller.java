@@ -16,7 +16,7 @@ public class Controller implements Initializable {
     private ArrayList<Employee> list = new ArrayList<>(); // Declaring an arraylist to store linkedlists of employees
     private String fileName = "./data.csv"; // Default File to Load/Save from/to
 
-    
+
     @FXML
     private TableView<Employee> table;
 
@@ -25,6 +25,18 @@ public class Controller implements Initializable {
 
     @FXML
     public TableColumn<Employee, String> surname;
+
+    @FXML
+    public TableColumn<Employee, String> gender;
+
+    @FXML
+    public TableColumn<Employee, String> birthdate;
+
+    @FXML
+    public TableColumn<Employee, String> age;
+
+    @FXML
+    public TableColumn<Employee, String> id;
 
     String load() {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -190,7 +202,11 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        surname.setCellValueFactory(new PropertyValueFactory<>("Surname"));
+        surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
 
         load(); // Load data to array
