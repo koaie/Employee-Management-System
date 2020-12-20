@@ -104,6 +104,10 @@ public class Employee implements Holidays {
         return this;
     }
 
+    int calculateAge(String birthdate) {
+        return Period.between(LocalDate.parse(birthdate), LocalDate.now()).getYears();
+    }
+
     @Override
     public String toString() {
         return getName() + "," + getSurname() + "," + getGender() + "," + getBirthdate() + "," + getId() + "'"
