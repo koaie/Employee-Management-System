@@ -1,7 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.time.LocalDate;
-import java.time.Period;
 
 public class File {
     ArrayList<Employee> load(String fileName) {

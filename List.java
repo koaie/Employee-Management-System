@@ -1,36 +1,34 @@
-import java.util.*;
-import java.io.*;
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.ArrayList;
 
-public class List {
-    private ArrayList<Employee> list = new ArrayList<>(); // Declaring an arraylist to store linkedlists of employees
+public class List
+{
+    private ArrayList<Employee> data = new ArrayList<>(); // Declaring an arraylist to store linkedlists of employees
 
         // Create a new employee with the format:
     // Name,Surname,Gender,Birthdate,ID,Course,Result,Status
     void add(String name, String surname, String gender, String birthDate, String id, String remHolidays,
             String reqHolidays) {
-        list.add(new Employee(name, surname, gender, birthDate, id, remHolidays, reqHolidays));
+        data.add(new Employee(name, surname, gender, birthDate, id, remHolidays, reqHolidays));
     }
 
     ArrayList<Employee> get() {
-        return list; // Return a specific index
+        return data; // Return a specific index
     }
 
-    void set(ArrayList<Employee> list)
+    void set(ArrayList<Employee> data)
     {
-        this.list = list;
+        this.data = data;
     }
 
     void remove(int index) {
-        list.remove(index); // Removes the linkedlist of specified index
+        data.remove(index); // Removes the linkedlist of specified index
     }
 
     Employee get(int index) {
-        return list.get(index); // Return a specific index
+        return data.get(index); // Return a specific index
     }
 
     int total() {
-        return list.size(); // Return the size of Employelist
+        return data.size(); // Return the size of Employelist
     }
 }
