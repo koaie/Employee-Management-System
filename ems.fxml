@@ -17,14 +17,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table" layoutY="-1.0" prefHeight="350.0" prefWidth="600.0">
+                        <TableView fx:id="table" layoutY="-1.0" prefHeight="315.0" prefWidth="600.0">
                           <columns>
                             <TableColumn fx:id="name" prefWidth="105.0" text="Forename" />
                             <TableColumn fx:id="surname" prefWidth="105.0" text="Surname" />
                               <TableColumn fx:id="gender" prefWidth="105.0" text="Gender" />
                               <TableColumn fx:id="birthdate" prefWidth="105.0" text="Birthdate" />
-                              <TableColumn fx:id="age" prefWidth="105.0" text="Age" />
-                              <TableColumn fx:id="id" prefWidth="80.0" text="id" />
+                              <TableColumn fx:id="age" prefWidth="80.0" text="Age" />
+                              <TableColumn fx:id="id" prefWidth="105.0" text="id" />
                           </columns>
                         </TableView>
                      </children>

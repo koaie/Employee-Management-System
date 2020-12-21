@@ -82,18 +82,23 @@ public class Controller implements Initializable {
 
     @FXML
     void add(ActionEvent event) {
-        Employee e = new Employee();
-        e.setName(dialog("name"));
-        e.setSurname(dialog("Surname"));
-        e.setBirthdate(dialog("Birthday"));
-        e.setGender(dialog("Gender"));
-        e.setId(String.valueOf(table.getItems().size() + 1));
-        e.setRemHolidays(dialog("Remaining Holidays"));
-        e.setReqHolidays(dialog("Requested Holidays"));
-        if (e.valid()) {
-            table.getItems().add(e);
-        } else {
-            alret("Invalid employee", "Please validate your inputs");
+        try {
+            Employee e = new Employee();
+            e.setName(dialog("name"));
+            e.setSurname(dialog("Surname"));
+            e.setBirthdate(dialog("Birthday"));
+            e.setGender(dialog("Gender"));
+            e.setAge(e.calcAge());
+            e.setId(String.valueOf(table.getItems().size() + 1));
+            e.setRemHolidays(dialog("Remaining Holidays"));
+            e.setReqHolidays(dialog("Requested Holidays"));
+            if (e.valid()) {
+                table.getItems().add(e);
+            } else {
+                alret("Invalid employee", "Please validate your inputs");
+            }
+        } catch (Exception e) {
+            alret("Please validate your inputs", e.toString());
         }
     }
 

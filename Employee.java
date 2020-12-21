@@ -22,7 +22,7 @@ public class Employee implements Holidays {
         this.surname = new SimpleStringProperty(surname);
         this.gender = new SimpleStringProperty(gender);
         this.birthdate = new SimpleStringProperty(birthDate);
-        this.age = new SimpleIntegerProperty(calcAge());
+        this.age = new SimpleIntegerProperty(calcAge(birthDate));
         this.id = new SimpleStringProperty(id);
         this.remHolidays = new SimpleStringProperty(remHolidays);
         this.reqHolidays = new SimpleStringProperty(reqHolidays);
