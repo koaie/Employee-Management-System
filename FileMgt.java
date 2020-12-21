@@ -1,4 +1,7 @@
 import java.util.*;
+
+import javafx.collections.ObservableList;
+
 import java.io.*;
 
 public class FileMgt {
@@ -50,4 +53,24 @@ public class FileMgt {
             System.out.println(e.toString()); // Print error
         }
     }
+
+	public void save(ObservableList<Employee> list, String fileName) {
+                // Write each node to file in the correct format
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+                    for (int i = 0; i < list.size(); i++) {
+                        for (int j = 0; j < list.size(); j++) {
+                            // If last element dont inset a comma, otherwise insert comma
+                            if (j == list.size() - 1) {
+                                bw.write(list.get(i).toString());
+                            } else {
+                                bw.write(list.get(i).toString() + ",");
+                            }
+                        }
+                        bw.write("\n"); // Insert newline to file
+                    }
+                } catch (Exception e) // Catch error
+                {
+                    System.out.println(e.toString()); // Print error
+                }
+	}
 }

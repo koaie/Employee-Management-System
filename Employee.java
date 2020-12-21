@@ -22,10 +22,13 @@ public class Employee implements Holidays {
         this.surname = new SimpleStringProperty(surname);
         this.gender = new SimpleStringProperty(gender);
         this.birthdate = new SimpleStringProperty(birthDate);
-        this.age = new SimpleIntegerProperty(Period.between(LocalDate.parse(birthDate), LocalDate.now()).getYears());
+        this.age = new SimpleIntegerProperty(calcAge());
         this.id = new SimpleStringProperty(id);
         this.remHolidays = new SimpleStringProperty(remHolidays);
         this.reqHolidays = new SimpleStringProperty(reqHolidays);
+    }
+
+    public Employee() {
     }
 
     public String getName() {
@@ -35,7 +38,6 @@ public class Employee implements Holidays {
     public String getSurname() {
         return this.surname.get();
     }
-
 
     public String getGender() {
         return this.gender.get();
@@ -52,7 +54,6 @@ public class Employee implements Holidays {
     public String getId() {
         return this.id.get();
     }
-
 
     @Override // Override the getRemHolidays function from IStudent
     public String getRemHolidays() {
@@ -104,14 +105,24 @@ public class Employee implements Holidays {
         return this;
     }
 
-    int calculateAge(String birthdate) {
+    int calcAge() {
+        return Period.between(LocalDate.parse(birthdate.get()), LocalDate.now()).getYears();
+    }
+
+    int calcAge(String birthdate) {
         return Period.between(LocalDate.parse(birthdate), LocalDate.now()).getYears();
+    }
+
+    boolean valid() {
+        return (getName().matches("[A-Za-z]+") && getSurname().matches("[A-Za-z]+") && getGender().matches("(Male|Female|Other)")
+        && getBirthdate().matches("\\d{4}-\\d{2}-\\d{2}") && getId().matches("\\d+") && getRemHolidays().matches("\\d+")
+        && getReqHolidays().matches("\\d+"));
     }
 
     @Override
     public String toString() {
-        return getName() + "," + getSurname() + "," + getGender() + "," + getBirthdate() + "," + getId() + "'"
-                + "," + getRemHolidays() + "," + getReqHolidays();
+        return getName() + "," + getSurname() + "," + getGender() + "," + getBirthdate() + "," + getId() + ","
+                + getRemHolidays() + "," + getReqHolidays();
     }
 
 }

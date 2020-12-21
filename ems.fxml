@@ -45,12 +45,12 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="save" alignment="CENTER" layoutX="13.0" layoutY="101.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="💾" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="save" alignment="CENTER" layoutX="13.0" layoutY="101.0" mnemonicParsing="false" onAction="#save" prefHeight="40.0" prefWidth="40.0" text="💾" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="add" alignment="CENTER" layoutX="13.0" layoutY="146.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="➕" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="add" alignment="CENTER" layoutX="13.0" layoutY="146.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="40.0" text="➕" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
@@ -61,11 +61,6 @@
                </font>
             </Button>
             <Button fx:id="refresh" alignment="CENTER" layoutX="13.0" layoutY="236.0" mnemonicParsing="false" onAction="#refresh" prefHeight="40.0" prefWidth="40.0" text="🔄" textAlignment="CENTER" textFill="#615d5d">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="edit" alignment="CENTER" layoutX="13.0" layoutY="281.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="🛠" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
