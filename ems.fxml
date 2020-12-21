@@ -40,27 +40,27 @@
       </TabPane>
       <AnchorPane fx:id="epane" layoutX="595.0" prefHeight="342.0" prefWidth="65.0">
          <children>
-            <Button fx:id="load" alignment="CENTER" layoutX="13.0" layoutY="56.0" mnemonicParsing="false" onAction="#load" prefHeight="40.0" prefWidth="40.0" text="📄" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="load" alignment="CENTER" layoutX="13.0" layoutY="58.0" mnemonicParsing="false" onAction="#load" prefHeight="40.0" prefWidth="40.0" text="📄" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="save" alignment="CENTER" layoutX="13.0" layoutY="101.0" mnemonicParsing="false" onAction="#save" prefHeight="40.0" prefWidth="40.0" text="💾" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="save" alignment="CENTER" layoutX="13.0" layoutY="103.0" mnemonicParsing="false" onAction="#save" prefHeight="40.0" prefWidth="40.0" text="💾" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="add" alignment="CENTER" layoutX="13.0" layoutY="146.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="40.0" text="➕" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="add" alignment="CENTER" layoutX="13.0" layoutY="148.0" mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="40.0" text="➕" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="remove" alignment="CENTER" layoutX="13.0" layoutY="191.0" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="40.0" text="➖" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="remove" alignment="CENTER" layoutX="13.0" layoutY="193.0" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="40.0" text="➖" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="refresh" alignment="CENTER" layoutX="13.0" layoutY="236.0" mnemonicParsing="false" onAction="#refresh" prefHeight="40.0" prefWidth="40.0" text="🔄" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="refresh" alignment="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#refresh" prefHeight="40.0" prefWidth="40.0" text="🔄" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>
@@ -70,6 +70,11 @@
                   <Font size="30.0" />
                </font>
             </Text>
+            <Button fx:id="search" alignment="CENTER" layoutX="13.0" layoutY="284.0" mnemonicParsing="false" onAction="#search" prefHeight="40.0" prefWidth="40.0" text="🔍" textAlignment="CENTER" textFill="#615d5d">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -60,6 +60,9 @@ public class Controller implements Initializable {
     private Button remove;
 
     @FXML
+    private Button search;
+
+    @FXML
     void load(ActionEvent event) {
         Stage stage = (Stage) save.getScene().getWindow();
 
@@ -82,6 +85,18 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    void search(ActionEvent event) {
+        String input = dialog("id");
+        table.getItems().forEach(e -> {
+            if(e.getId().equals(input))
+            {
+                System.out.println(e.toString());
+                alret(AlertType.INFORMATION, "Employee found", e.toString());
+            }
+        });
+    }
+
+    @FXML
     void add(ActionEvent event) {
         try {
             Employee e = new Employee();
@@ -96,10 +111,10 @@ public class Controller implements Initializable {
             if (e.valid()) {
                 table.getItems().add(e);
             } else {
-                alret("Invalid employee", VALIDATE_INPUT);
+                alret(AlertType.ERROR,"Invalid employee", VALIDATE_INPUT);
             }
         } catch (Exception e) {
-            alret(VALIDATE_INPUT, e.toString());
+            alret(AlertType.ERROR,VALIDATE_INPUT, e.toString());
         }
     }
 
@@ -126,13 +141,13 @@ public class Controller implements Initializable {
                 return dialog.showAndWait().get();
             }
         } catch (Exception e) {
-            alret(VALIDATE_INPUT, e.toString());
+            alret(AlertType.ERROR,VALIDATE_INPUT, e.toString());
         }
         return "";
     }
 
-    void alret(String header, String content) {
-        Alert alert = new Alert(AlertType.ERROR);
+    void alret(Alert.AlertType type ,String header, String content) {
+        Alert alert = new Alert(type);
         alert.setTitle("Error");
         alert.setHeaderText(header);
         alert.setContentText(content);
