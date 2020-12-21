@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    private static final String VALIDATE_INPUT = "Please validate your inputs";
     private String fileName = "./data.csv"; // Default File to Load/Save from/to
     private FileMgt fileMgt = new FileMgt();
     private EmployeeMgt list = new EmployeeMgt();
@@ -95,10 +96,10 @@ public class Controller implements Initializable {
             if (e.valid()) {
                 table.getItems().add(e);
             } else {
-                alret("Invalid employee", "Please validate your inputs");
+                alret("Invalid employee", VALIDATE_INPUT);
             }
         } catch (Exception e) {
-            alret("Please validate your inputs", e.toString());
+            alret(VALIDATE_INPUT, e.toString());
         }
     }
 
@@ -114,13 +115,20 @@ public class Controller implements Initializable {
     }
 
     String dialog(String input) {
-        TextInputDialog dialog = new TextInputDialog("");
+        try {
+            TextInputDialog dialog = new TextInputDialog("");
 
-        dialog.setTitle(input);
-        dialog.setHeaderText("Enter your " + input + ":");
-        dialog.setContentText(input + ":");
+            dialog.setTitle(input);
+            dialog.setHeaderText("Enter your " + input + ":");
+            dialog.setContentText(input + ":");
 
-        return dialog.showAndWait().get();
+            if (dialog.showAndWait().isPresent()) {
+                return dialog.showAndWait().get();
+            }
+        } catch (Exception e) {
+            alret(VALIDATE_INPUT, e.toString());
+        }
+        return "";
     }
 
     void alret(String header, String content) {
