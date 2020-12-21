@@ -55,7 +55,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="delete" alignment="CENTER" layoutX="13.0" layoutY="191.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="➖" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="remove" alignment="CENTER" layoutX="13.0" layoutY="191.0" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="40.0" text="➖" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>

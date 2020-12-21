@@ -103,6 +103,11 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    void remove(ActionEvent event) {
+        table.getItems().removeAll(table.getSelectionModel().getSelectedItems());
+    }
+
+    @FXML
     void refresh(ActionEvent event) {
         table.getItems().clear(); // Remove All data
         table.setItems(FXCollections.observableArrayList(fileMgt.load(empRegex, fileName))); // Add data to table
