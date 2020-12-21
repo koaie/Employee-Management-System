@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class File {
+public class FileMgt {
     ArrayList<Employee> load(String regex,String fileName) {
         ArrayList<Employee> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {

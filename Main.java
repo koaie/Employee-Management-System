@@ -14,15 +14,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ems.fxml"));
-        Scene scene = new Scene(root, 600, 342);
         JMetro jMetro = new JMetro(Style.LIGHT);
-        jMetro.setScene(scene); 
+        Parent root = FXMLLoader.load(getClass().getResource("ems.fxml"));
+        Scene main = new Scene(root, 665, 350);
+
+        jMetro.setScene(main); 
+
         primaryStage.setResizable(false);
-
-
         primaryStage.setTitle("Employee Mangement System");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(main);
         primaryStage.show();
     }
 }
