@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         JMetro jMetro = new JMetro(Style.LIGHT);
         Parent root = FXMLLoader.load(getClass().getResource("ems.fxml"));
-        Scene main = new Scene(root, 665, 350);
+        Scene main = new Scene(root, 890, 360);
 
         jMetro.setScene(main); 
 

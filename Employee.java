@@ -57,12 +57,12 @@ public class Employee implements Holidays {
 
     @Override // Override the getRemHolidays function from IStudent
     public String getRemHolidays() {
-        return remHolidays.get(); // Return result node
+        return this.remHolidays.get(); // Return result node
     }
 
     @Override // Override the getReqHolidays function from IStudent
     public String getReqHolidays() {
-        return reqHolidays.get(); // Return status node
+        return this.reqHolidays.get(); // Return status node
     }
 
     public Employee setName(String name) {

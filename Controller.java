@@ -2,15 +2,21 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.event.*;
 
 import java.io.File;
 import java.net.URL;
@@ -45,26 +51,14 @@ public class Controller implements Initializable {
     private TableColumn<Employee, String> id;
 
     @FXML
-    private Button load;
+    private TableColumn<Employee, String> reqHolidays;
 
     @FXML
-    private Button save;
-
-    @FXML
-    private Button refresh;
-
-    @FXML
-    private Button add;
-
-    @FXML
-    private Button remove;
-
-    @FXML
-    private Button search;
+    private TableColumn<Employee, String> remHolidays;
 
     @FXML
     void load(ActionEvent event) {
-        Stage stage = (Stage) save.getScene().getWindow();
+        Stage stage = (Stage) table.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(stage);
@@ -76,7 +70,7 @@ public class Controller implements Initializable {
 
     @FXML
     void save(ActionEvent event) {
-        Stage stage = (Stage) save.getScene().getWindow();
+        Stage stage = (Stage) table.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(stage);
@@ -88,8 +82,7 @@ public class Controller implements Initializable {
     void search(ActionEvent event) {
         String input = dialog("id");
         table.getItems().forEach(e -> {
-            if(e.getId().equals(input))
-            {
+            if (e.getId().equals(input)) {
                 System.out.println(e.toString());
                 alret(AlertType.INFORMATION, "Employee found", e.toString());
             }
@@ -111,10 +104,10 @@ public class Controller implements Initializable {
             if (e.valid()) {
                 table.getItems().add(e);
             } else {
-                alret(AlertType.ERROR,"Invalid employee", VALIDATE_INPUT);
+                alret(AlertType.ERROR, "Invalid employee", VALIDATE_INPUT);
             }
         } catch (Exception e) {
-            alret(AlertType.ERROR,VALIDATE_INPUT, e.toString());
+            alret(AlertType.ERROR, VALIDATE_INPUT, e.toString());
         }
     }
 
@@ -125,6 +118,7 @@ public class Controller implements Initializable {
 
     @FXML
     void refresh(ActionEvent event) {
+
         table.getItems().clear(); // Remove All data
         table.setItems(FXCollections.observableArrayList(fileMgt.load(empRegex, fileName))); // Add data to table
     }
@@ -137,16 +131,14 @@ public class Controller implements Initializable {
             dialog.setHeaderText("Enter your " + input + ":");
             dialog.setContentText(input + ":");
 
-            if (dialog.showAndWait().isPresent()) {
-                return dialog.showAndWait().get();
-            }
+            return dialog.showAndWait().get();
         } catch (Exception e) {
-            alret(AlertType.ERROR,VALIDATE_INPUT, e.toString());
+            alret(AlertType.ERROR, VALIDATE_INPUT, e.toString());
         }
         return "";
     }
 
-    void alret(Alert.AlertType type ,String header, String content) {
+    void alret(Alert.AlertType type, String header, String content) {
         Alert alert = new Alert(type);
         alert.setTitle("Error");
         alert.setHeaderText(header);
@@ -162,9 +154,10 @@ public class Controller implements Initializable {
         birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
         age.setCellValueFactory(new PropertyValueFactory<>("age"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        reqHolidays.setCellValueFactory(new PropertyValueFactory<>("reqHolidays"));
+        remHolidays.setCellValueFactory(new PropertyValueFactory<>("remHolidays"));
 
         list.set(fileMgt.load(empRegex, fileName));
         table.setItems(FXCollections.observableArrayList(list.get())); // Load data to table
     }
-
 }
