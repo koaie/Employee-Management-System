@@ -28,7 +28,7 @@
       </AnchorPane>
       <AnchorPane fx:id="epane" layoutX="823.0" layoutY="3.0" prefHeight="342.0" prefWidth="65.0">
          <children>
-            <Button fx:id="search1" alignment="CENTER" layoutX="13.0" layoutY="313.0" mnemonicParsing="false" onAction="#search" prefHeight="40.0" prefWidth="40.0" text="✈" textAlignment="CENTER" textFill="#615d5d">
+            <Button fx:id="search1" alignment="CENTER" layoutX="13.0" layoutY="313.0" mnemonicParsing="false" onAction="#holiday" prefHeight="40.0" prefWidth="40.0" text="✈" textAlignment="CENTER" textFill="#615d5d">
                <font>
                   <Font size="15.0" />
                </font>

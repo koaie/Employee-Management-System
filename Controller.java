@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
@@ -83,7 +84,6 @@ public class Controller implements Initializable {
         String input = dialog("id");
         table.getItems().forEach(e -> {
             if (e.getId().equals(input)) {
-                System.out.println(e.toString());
                 alret(AlertType.INFORMATION, "Employee found", e.toString());
             }
         });
@@ -121,6 +121,28 @@ public class Controller implements Initializable {
 
         table.getItems().clear(); // Remove All data
         table.setItems(FXCollections.observableArrayList(fileMgt.load(empRegex, fileName))); // Add data to table
+    }
+
+    @FXML
+    private void holiday(ActionEvent event) {
+        int index = table.getSelectionModel().getSelectedIndex();
+        Employee e = table.getItems().get(index);
+
+        int rem = Integer.parseInt(e.getRemHolidays());
+        int req = Integer.parseInt(e.getReqHolidays());
+
+        String input = dialog("How many days off would you like to take");
+
+        if (input.matches("\\d+")) {
+            int in = Integer.parseInt(input);
+            if (in <= rem) {
+                e.setRemHolidays(String.valueOf(rem - in));
+                e.setReqHolidays(String.valueOf(req + in));
+                table.getItems().set(index, e);
+            } else {
+                alret(AlertType.ERROR, "Error!", "Input exceeds remaning holidays");
+            }
+        }
     }
 
     String dialog(String input) {

@@ -114,7 +114,7 @@ public class Employee implements Holidays {
     }
 
     boolean valid() {
-        return (getName().matches("[A-Za-z]+") && getSurname().matches("[A-Za-z]+") && getGender().matches("(Male|Female|Other)")
+        return (getName().matches("[A-Za-z]+") && getSurname().matches("[A-Za-z]+") && getGender().toLowerCase().matches("(male|female|other)")
         && getBirthdate().matches("\\d{4}-\\d{2}-\\d{2}") && getId().matches("\\d+") && getRemHolidays().matches("\\d+")
         && getReqHolidays().matches("\\d+"));
     }
