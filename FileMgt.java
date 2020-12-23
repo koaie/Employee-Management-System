@@ -1,7 +1,5 @@
 import java.util.*;
-
 import javafx.collections.ObservableList;
-
 import java.io.*;
 
 public class FileMgt {

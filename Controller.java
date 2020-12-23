@@ -85,8 +85,8 @@ public class Controller implements Initializable {
     void add(ActionEvent event) {
         try {
             Employee e = new Employee();
-            String input = "default";
-            while (!input.equals(null)) {
+            String input = "";
+            while (input !=null) {
                 input = dialog("name");
                 e.setName(input);
                 input = dialog("Surname");
