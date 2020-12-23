@@ -2,25 +2,17 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.*;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.event.*;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -93,18 +85,24 @@ public class Controller implements Initializable {
     void add(ActionEvent event) {
         try {
             Employee e = new Employee();
-            e.setName(dialog("name"));
-            e.setSurname(dialog("Surname"));
-            e.setBirthdate(dialog("Birthday"));
-            e.setGender(dialog("Gender"));
-            e.setAge(e.calcAge());
-            e.setId(String.valueOf(table.getItems().size() + 1));
-            e.setRemHolidays(dialog("Remaining Holidays"));
-            e.setReqHolidays(dialog("Requested Holidays"));
-            if (e.valid()) {
-                table.getItems().add(e);
-            } else {
-                alret(AlertType.ERROR, "Invalid employee", VALIDATE_INPUT);
+            String input = "default";
+            while (!input.equals(null)) {
+                input = dialog("name");
+                e.setName(input);
+                input = dialog("Surname");
+                e.setSurname(input);
+                input = dialog("Birthday");
+                e.setBirthdate(input);
+                e.setGender(dialog("Gender"));
+                e.setAge(e.calcAge());
+                e.setId(String.valueOf(table.getItems().size() + 1));
+                e.setRemHolidays(dialog("Remaining Holidays"));
+                e.setReqHolidays(dialog("Requested Holidays"));
+                if (e.valid()) {
+                    table.getItems().add(e);
+                } else {
+                    alret(AlertType.ERROR, "Invalid employee", VALIDATE_INPUT);
+                }
             }
         } catch (Exception e) {
             alret(AlertType.ERROR, VALIDATE_INPUT, e.toString());
@@ -152,12 +150,14 @@ public class Controller implements Initializable {
             dialog.setTitle(input);
             dialog.setHeaderText("Enter your " + input + ":");
             dialog.setContentText(input + ":");
-
-            return dialog.showAndWait().get();
+            Optional results = dialog.showAndWait();
+            if (results.isPresent()) {
+                return results.get().toString();
+            }
         } catch (Exception e) {
             alret(AlertType.ERROR, VALIDATE_INPUT, e.toString());
         }
-        return "";
+        return null;
     }
 
     void alret(Alert.AlertType type, String header, String content) {
