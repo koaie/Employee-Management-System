@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.property.IntegerProperty;
 
 public class Employee implements Holidays {
+    // Set attributes
     private StringProperty name;
     private StringProperty surname;
     private StringProperty gender;
@@ -15,7 +16,7 @@ public class Employee implements Holidays {
     private StringProperty remHolidays;
     private StringProperty reqHolidays;
 
-    // Add new student
+    // Add new Employee
     Employee(String name, String surname, String gender, String birthDate, String id, String remHolidays,
             String reqHolidays) {
         this.name = new SimpleStringProperty(name);
@@ -30,6 +31,9 @@ public class Employee implements Holidays {
 
     public Employee() {
     }
+    /* ************** */
+    /* Getters start  */
+    /* ************** */
 
     public String getName() {
         return this.name.get();
@@ -55,15 +59,19 @@ public class Employee implements Holidays {
         return this.id.get();
     }
 
-    @Override // Override the getRemHolidays function from IStudent
+    @Override // Override the getRemHolidays
     public String getRemHolidays() {
-        return this.remHolidays.get(); // Return result node
+        return this.remHolidays.get();
     }
 
-    @Override // Override the getReqHolidays function from IStudent
+    @Override // Override the getReqHolidays
     public String getReqHolidays() {
-        return this.reqHolidays.get(); // Return status node
+        return this.reqHolidays.get();
     }
+
+    /* ************** */
+    /* Setters start  */
+    /* ************** */
 
     public Employee setName(String name) {
         this.name = new SimpleStringProperty(name);

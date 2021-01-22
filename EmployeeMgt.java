@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class EmployeeMgt
 {
-    private ArrayList<Employee> list = new ArrayList<>(); // Declaring an arraylist to store linkedlists of employees
+    private ArrayList<Employee> list = new ArrayList<>(); // Declaring an arraylist to store employees
 
     ArrayList<Employee> get() {
         return list; // Return a specific index
@@ -14,7 +14,7 @@ public class EmployeeMgt
     }
 
     void remove(int index) {
-        list.remove(index); // Removes the linkedlist of specified index
+        list.remove(index); // Removes specified index
     }
 
     Employee get(int index) {

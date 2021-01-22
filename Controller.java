@@ -73,8 +73,9 @@ public class Controller implements Initializable {
 
     @FXML
     void search(ActionEvent event) {
-        String input = dialog("id");
-        table.getItems().forEach(e -> {
+        String input = dialog("id"); // Input prompt
+
+        table.getItems().forEach(e -> { // Go through table and compare to input
             if (e.getId().equals(input)) {
                 alret(AlertType.INFORMATION, "Employee found", e.toString());
             }
@@ -84,9 +85,11 @@ public class Controller implements Initializable {
     @FXML
     void add(ActionEvent event) {
         try {
-            Employee e = new Employee();
-            String input = "";
-            while (input !=null) {
+            Employee e = new Employee(); // Create temporary employee
+            String input = ""; // Create input variable
+
+            // Loop through requests as long as input isnt empty
+            while (input != null) {
                 input = dialog("name");
                 e.setName(input);
                 input = dialog("Surname");
@@ -98,20 +101,21 @@ public class Controller implements Initializable {
                 e.setId(String.valueOf(table.getItems().size() + 1));
                 e.setRemHolidays(dialog("Remaining Holidays"));
                 e.setReqHolidays(dialog("Requested Holidays"));
-                if (e.valid()) {
+                if (e.valid()) { // Validate input with regex
                     table.getItems().add(e);
                 } else {
                     alret(AlertType.ERROR, "Invalid employee", VALIDATE_INPUT);
                 }
             }
         } catch (Exception e) {
+            // Show error if exception is caught
             alret(AlertType.ERROR, VALIDATE_INPUT, e.toString());
         }
     }
 
     @FXML
     void remove(ActionEvent event) {
-        table.getItems().removeAll(table.getSelectionModel().getSelectedItems());
+        table.getItems().removeAll(table.getSelectionModel().getSelectedItems()); // Remove selected employee from table
     }
 
     @FXML
@@ -123,23 +127,27 @@ public class Controller implements Initializable {
 
     @FXML
     private void holiday(ActionEvent event) {
-        int index = table.getSelectionModel().getSelectedIndex();
-        Employee e = table.getItems().get(index);
+        int index = table.getSelectionModel().getSelectedIndex(); // Get current selected employee index
+        Employee e = table.getItems().get(index); // Get current employee from index
 
-        int rem = Integer.parseInt(e.getRemHolidays());
-        int req = Integer.parseInt(e.getReqHolidays());
+        int rem = Integer.parseInt(e.getRemHolidays()); // Get current remaining holidays
+        int req = Integer.parseInt(e.getReqHolidays()); // Get current requested holidays
 
-        String input = dialog("How many days off would you like to take");
-
-        if (input.matches("\\d+")) {
-            int in = Integer.parseInt(input);
-            if (in <= rem) {
-                e.setRemHolidays(String.valueOf(rem - in));
-                e.setReqHolidays(String.valueOf(req + in));
-                table.getItems().set(index, e);
-            } else {
-                alret(AlertType.ERROR, "Error!", "Input exceeds remaning holidays");
+        String input = dialog("How many days off would you like to take"); // Input prompt
+        try {
+            if (input.matches("\\d+")) { // Validate input
+                int in = Integer.parseInt(input);
+                if (in <= rem) { // If there is enough remaining holidays
+                    e.setRemHolidays(String.valueOf(rem - in));
+                    e.setReqHolidays(String.valueOf(req + in));
+                    table.getItems().set(index, e); // Rectify table to amend for the accepted holiday
+                } else {
+                    alret(AlertType.ERROR, "Error!", "Input exceeds remaning holidays");
+                }
             }
+        } catch (Exception exp) {
+            // Show error if exception is caught
+            alret(AlertType.ERROR, VALIDATE_INPUT, exp.toString());
         }
     }
 
@@ -170,6 +178,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Get table data
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
@@ -179,7 +188,7 @@ public class Controller implements Initializable {
         reqHolidays.setCellValueFactory(new PropertyValueFactory<>("reqHolidays"));
         remHolidays.setCellValueFactory(new PropertyValueFactory<>("remHolidays"));
 
-        list.set(fileMgt.load(empRegex, fileName));
+        list.set(fileMgt.load(empRegex, fileName)); // Load data to employee list
         table.setItems(FXCollections.observableArrayList(list.get())); // Load data to table
     }
 }
